@@ -154,3 +154,25 @@ h3{font-size:20px}
     radial-gradient(380px 240px at 90% 30%, #93c5fd40 0, transparent 60%);
   filter:blur(6px)
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+img, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+}
