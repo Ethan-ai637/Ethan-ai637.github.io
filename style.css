@@ -46,7 +46,7 @@ h3{font-size:clamp(15px, 1.2vw, 18px)}
   margin:0 auto;
   padding-inline:clamp(14px, 2.4vw, 28px);
 }
-.section{margin: clamp(24px, 4.5vw, 48px) auto}
+.section{margin: clamp(24px, 4.5vw, 36px) auto}
 
 /* —— 顶部导航更紧凑 —— */
 .site-header{position:relative;padding-top:6px}
