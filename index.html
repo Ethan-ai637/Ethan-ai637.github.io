@@ -3,103 +3,189 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>你的名字 | 个人主页</title>
-  <meta name="description" content="你的名字的个人主页：研究方向 / 项目 / 联系方式" />
+  <title>你的名字 | 本科生个人主页</title>
+  <meta name="description" content="你的名字的本科生个人主页：教育背景、项目、竞赛获奖、论文、软著、开源贡献与联系方式" />
   <link rel="stylesheet" href="style.css" />
+  <!-- 可选：网站小图标，准备 /favicon.ico 或 /favicon.png 即可 -->
+  <!-- <link rel="icon" href="favicon.png"> -->
 </head>
 <body>
-  <!-- 顶部装饰背景 -->
   <div class="bg-blur" aria-hidden="true"></div>
 
+  <!-- 顶部导航 -->
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="#top">你的名字</a>
       <div class="nav-links">
         <a href="#about">关于我</a>
+        <a href="#education">教育</a>
         <a href="#projects">项目</a>
+        <a href="#achievements">成就</a>
         <a href="#contact">联系</a>
       </div>
     </nav>
 
+    <!-- Hero -->
     <section id="top" class="hero container">
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/1?v=4" alt="头像">
+      <!-- 头像：见文末“如何自定义头像” -->
+      <img class="avatar" src="avatar.jpg" alt="头像">
       <div class="hero-content">
         <h1>你的名字</h1>
-        <p class="lead">一句话介绍：我在做 X / 研究 Y。</p>
+        <p class="lead">
+          本科生 · 专业方向（如：计算机科学 / 会计与金融）<br>
+          兴趣与关键词：合成数据、学术诚信检测、Web、可视化
+        </p>
         <div class="hero-actions">
           <a class="btn primary" href="#projects">查看项目</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">下载简历（PDF）</a>
           <a class="btn" href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
         </div>
+        <ul class="tags">
+          <li>本科在读</li><li>GPA 3.8/4.0</li><li>英语/普通话</li><li>前端 / 数据分析</li>
+        </ul>
       </div>
     </section>
   </header>
 
   <main>
+    <!-- 关于我 -->
     <section id="about" class="container section">
       <h2>关于我</h2>
       <div class="card">
         <p>
-          这里写简介。建议 2–4 句：你现在在做什么、擅长领域、正在找什么机会或合作方向。
-          可以附上研究关键词或兴趣标签。
+          我目前在 <b>某大学 · 某学院</b> 本科就读，关注<span class="hl">合成数据</span>与
+          <span class="hl">不当引用检测</span>。我喜欢把研究思考做成可复用的工具或可视化页面，并在 GitHub 上开源。
+          正在寻找 <b>实习 / 研究助理 / 合作</b> 机会。
         </p>
-        <ul class="tags">
-          <li>合成数据</li>
-          <li>学术不当引用检测</li>
-          <li>Web / 数据可视化</li>
-        </ul>
       </div>
     </section>
 
+    <!-- 教育背景 -->
+    <section id="education" class="container section">
+      <h2>教育</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>某某大学 · 本科（2023–至今）</h3>
+            <p class="muted">专业：X（方向：Y） | GPA 3.8/4.0 | 主修课程：算法、数据库、会计信息系统、统计</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>校内/校外项目与社团</h3>
+            <p class="muted">数据竞赛社、开源俱乐部 | 志愿服务 120+ 小时</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目 -->
     <section id="projects" class="container section">
       <h2>项目</h2>
       <div class="grid">
         <article class="card card-project">
           <div class="card-head">
-            <h3>项目 A</h3>
+            <h3>极简学术主页生成器</h3>
             <span class="badge">2025</span>
           </div>
-          <p>一句话说明项目做了什么、关键技术/亮点/价值。</p>
+          <p>一键把 Markdown 简历渲染为响应式学术主页，支持导出 PDF 与暗色模式。</p>
           <div class="links">
-            <a href="#">代码</a> · <a href="#">演示</a> · <a href="#">文章</a>
+            <a href="#" target="_blank">代码</a> · <a href="#" target="_blank">演示</a> · <a href="#" target="_blank">指南</a>
           </div>
         </article>
 
         <article class="card card-project">
           <div class="card-head">
-            <h3>项目 B</h3>
-            <span class="badge">开源</span>
+            <h3>不当引用检测小工具</h3>
+            <span class="badge">研究</span>
           </div>
-          <p>一句话说明项目价值或应用场景。</p>
+          <p>针对撤稿论文语料构建的基线检测器，支持无效/错误引用标注与可视化对照。</p>
           <div class="links">
-            <a href="#">代码</a> · <a href="#">文档</a>
+            <a href="#" target="_blank">代码</a> · <a href="#" target="_blank">数据集</a>
           </div>
         </article>
 
         <article class="card card-project">
           <div class="card-head">
-            <h3>项目 C</h3>
-            <span class="badge">实验</span>
+            <h3>地铁路线规划可视化</h3>
+            <span class="badge">课程</span>
           </div>
-          <p>一句话说明成果或数据集/模型表现。</p>
+          <p>支持最少换乘/最短时间与站点时刻表的浏览，静态托管即可运行。</p>
           <div class="links">
-            <a href="#">代码</a> · <a href="#">结果</a>
+            <a href="#" target="_blank">代码</a> · <a href="#" target="_blank">演示</a>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- 个人成就（面向本科生） -->
+    <section id="achievements" class="container section">
+      <h2>个人成就</h2>
+
+      <div class="cards-2col">
+        <!-- 竞赛获奖 -->
+        <article class="card">
+          <h3>竞赛获奖</h3>
+          <ul class="list">
+            <li><b>全国大学生××竞赛 · 一等奖</b>（2024）—— 团队负责人，负责数据清洗与建模。</li>
+            <li><b>××黑客松 · 最佳作品</b>（2023）—— 基于可视化的欺诈检测 Demo。</li>
+          </ul>
+        </article>
+
+        <!-- 论文/出版物 -->
+        <article class="card">
+          <h3>论文 / 出版物</h3>
+          <ol class="list">
+            <li>你的名字, 合作者. <i>基于××的引用异常检测</i>. 某会议/期刊, 2025. <a href="#" target="_blank">PDF</a> · <a href="#" target="_blank">BibTeX</a></li>
+            <li>你的名字. <i>合成数据评测综述（预印本）</i>, 2024. <a href="#" target="_blank">arXiv</a></li>
+          </ol>
+        </article>
+
+        <!-- 软著/专利 -->
+        <article class="card">
+          <h3>软著 / 专利</h3>
+          <ul class="list">
+            <li>《××数据可视化平台 V1.0》软件著作权（登记号：XXXXXXXX）</li>
+            <li>《××文献引用一致性检测方法》发明专利（申请中）</li>
+          </ul>
+        </article>
+
+        <!-- 开源与代码贡献 -->
+        <article class="card">
+          <h3>开源与代码贡献</h3>
+          <ul class="list">
+            <li>GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">@yourname</a>（贡献图、Issue、PR）</li>
+            <li>向 <a href="#" target="_blank">某热门仓库</a> 提交 PR：修复 i18n 与可访问性（a11y）问题</li>
+          </ul>
+          <!-- 如需放统计卡片，可在国内网络不稳定时注释掉 -->
+          <!--
+          <div class="embed-grid">
+            <img alt="GitHub stats"
+                 src="https://github-readme-stats.vercel.app/api?username=yourname&show_icons=true&hide_title=true&theme=transparent" />
+            <img alt="Top Langs"
+                 src="https://github-readme-stats.vercel.app/api/top-langs/?username=yourname&layout=compact&theme=transparent" />
+          </div>
+          -->
+        </article>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
     <section id="contact" class="container section">
       <h2>联系</h2>
       <div class="card contact">
         <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
         <p>GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">yourname</a></p>
+        <p>LinkedIn / 微信：可按需补充</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="y"></span> 你的名字 · 托管于 GitHub Pages</p>
+      <p>© <span id="y"></span> 你的名字 · GitHub Pages</p>
     </div>
   </footer>
 
