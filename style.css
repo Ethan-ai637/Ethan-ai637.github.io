@@ -117,10 +117,15 @@ h3{font-size:clamp(18px, 1.6vw, 22px)}
 .muted{color:var(--muted)}
 .card, .list li{overflow-wrap:anywhere} /* 防止长行撑宽 */
 
-.timeline{position:relative; margin-left:8px}
-.tl-item{display:flex; gap:12px; margin:12px 0}
-.tl-dot{width:12px; height:12px; border-radius:50%; background:var(--brand); margin:10px 6px 0 0; flex:0 0 auto}
-.tl-card{flex:1; background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:12px 14px; box-shadow:var(--shadow)}
+.timeline{margin:0}               /* 不再往右缩进 */
+.tl-item{margin:12px 0}           /* 普通竖直排列 */
+.tl-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+  box-shadow:var(--shadow);
+}
 
 /* 数据集统计条 */
 .stats-row{display:flex; gap:14px; flex-wrap:wrap; margin:12px 0 8px}
