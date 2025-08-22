@@ -8,26 +8,24 @@
   --brand-weak:#e9efff;
   --shadow:0 6px 20px rgba(0,0,0,.06);
   --radius:16px;
-  --container:820px; /* 单栏更协调的宽度 */
+  /* 关键：容器做成流式宽度（手机窄、桌面宽），上限 1200px */
+  --container: clamp(720px, 92vw, 1200px);
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0d1117;
-    --panel:#161b22;
-    --text:#e6edf3;
-    --muted:#9aa4af;
-    --border:#30363d;
-    --brand:#60a5fa;
-    --brand-weak:#0f172a;
+    --bg:#0d1117; --panel:#161b22; --text:#e6edf3; --muted:#9aa4af;
+    --border:#30363d; --brand:#60a5fa; --brand-weak:#0f172a;
     --shadow:0 8px 24px rgba(0,0,0,.4);
   }
 }
 
+/* 防横向滚动 & 基础排版放大一点 */
+html,body{max-width:100%;overflow-x:hidden}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font:16px/1.75 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  font:16px/1.8 system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color:var(--text);
   background:
     radial-gradient(1100px 600px at -10% -10%, #cfe1ff33 0, transparent 60%),
@@ -36,143 +34,133 @@ body{
 }
 a{color:var(--brand);text-decoration:none}
 a:hover{text-decoration:underline}
-h1,h2,h3{line-height:1.25;margin:0 0 .5em}
-h1{font-size:40px;letter-spacing:.2px}
-h2{font-size:26px;margin-top:6px}
-h3{font-size:20px}
+h1,h2,h3{line-height:1.25;margin:0 0 .55em}
+h1{font-size:clamp(34px, 3.4vw, 48px); letter-spacing:.2px}
+h2{font-size:clamp(22px, 2.2vw, 32px)}
+h3{font-size:clamp(18px, 1.6vw, 22px)}
 
-.container{max-width:var(--container);margin:0 auto;padding:0 22px}
-.section{margin:48px auto}
-@media (min-width:900px){.section{margin:60px auto}}
+/* 容器更宽，左右内边距用 vw 自适应 */
+.container{
+  max-width:var(--container);
+  width:100%;
+  margin:0 auto;
+  padding-inline:clamp(18px, 3vw, 36px);
+}
+.section{margin: clamp(40px, 6vw, 72px) auto}
 
-.site-header{position:relative;padding-top:10px}
+/* 顶部导航 */
+.site-header{position:relative;padding-top:8px}
 .nav{
-  position:sticky;top:0;z-index:20;
-  display:flex;gap:16px;align-items:center;
-  padding:10px 22px;
+  position:sticky; top:0; z-index:20;
+  display:flex; gap:18px; align-items:center;
+  padding:10px clamp(18px, 3vw, 36px);
   backdrop-filter:saturate(180%) blur(8px);
   background: color-mix(in oklab, var(--bg) 80%, transparent);
   border-bottom:1px solid var(--border)
 }
-.nav .brand{font-weight:700}
-.nav .nav-links{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
+.nav .brand{font-weight:700; font-size:clamp(16px, 1.6vw, 18px)}
+.nav .nav-links{margin-left:auto; display:flex; gap:16px; flex-wrap:wrap}
 .nav a{color:var(--text)}
 .nav a:hover{color:var(--brand)}
 
+/* Hero 更大些，头像和间距优化 */
 .hero{
-  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;
-  padding:42px 22px 12px
+  display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center;
+  padding: clamp(28px, 6vw, 56px) clamp(18px, 3vw, 36px) 12px;
 }
 .avatar{
-  width:108px;height:108px;border-radius:50%;
-  border:2px solid var(--border);box-shadow:var(--shadow);
-  object-fit:cover;background:var(--panel)
+  width: clamp(104px, 11vw, 136px);
+  height: clamp(104px, 11vw, 136px);
+  border-radius:50%;
+  border:2px solid var(--border);
+  box-shadow:var(--shadow);
+  object-fit:cover; background:var(--panel)
 }
-.lead{color:var(--muted);margin:8px 0 16px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.lead{color:var(--muted); margin:8px 0 16px; font-size:clamp(14px,1.4vw,16px)}
+.hero-actions{display:flex; gap:12px; flex-wrap:wrap}
 .btn{
-  display:inline-block;padding:10px 14px;border-radius:999px;
-  border:1px solid var(--border);background:var(--panel);color:var(--text);
-  box-shadow:var(--shadow)
+  display:inline-block; padding:10px 16px; border-radius:999px;
+  border:1px solid var(--border); background:var(--panel); color:var(--text);
+  box-shadow:var(--shadow); font-weight:600
 }
-.btn.primary{background:var(--brand);color:#fff;border-color:transparent}
-.btn:hover{transform:translateY(-1px);transition:.15s ease-in-out}
+.btn.primary{background:var(--brand); color:#fff; border-color:transparent}
+.btn:hover{transform:translateY(-1px); transition:.15s ease-in-out}
 
-.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:14px 0 0}
+.tags{display:flex; flex-wrap:wrap; gap:10px; list-style:none; padding:0; margin:14px 0 0}
 .tags li{
-  padding:4px 10px;border:1px solid var(--border);border-radius:999px;
-  background:linear-gradient(180deg,#fff8,#fff0)
+  padding:6px 12px; border:1px solid var(--border); border-radius:999px;
+  background:linear-gradient(180deg,#fff8,#fff0); font-size:13px
 }
 
-/* 卡片：单栏顺序排布，无网格 */
+/* 单栏卡片，增加横向占比 & 内边距 */
 .card{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:18px 18px;
+  padding: clamp(16px, 2.6vw, 28px);
   box-shadow:var(--shadow);
-  margin-bottom:18px; /* 单栏时让每块有呼吸感 */
+  margin-bottom: clamp(14px, 2vw, 22px);
+  width:100%;
 }
 .card-project .links a{margin-right:12px}
-.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card-head{display:flex; align-items:center; justify-content:space-between; gap:12px}
 .badge{
-  padding:4px 10px;border-radius:999px;font-size:12px;
+  padding:4px 10px; border-radius:999px; font-size:12px;
   background:var(--brand-weak);
-  color:color-mix(in oklab, var(--brand) 80%, black 20%);
+  color: color-mix(in oklab, var(--brand) 80%, black 20%);
   border:1px solid var(--border)
 }
 
-/* 列表/时间轴 */
-.list{margin:6px 0 0;padding-left:18px}
+/* 列表 & 时间轴 */
+.list{margin:6px 0 0; padding-left:20px}
 .list li{margin:6px 0}
 .muted{color:var(--muted)}
+.card, .list li{overflow-wrap:anywhere} /* 防止长行撑宽 */
 
-.timeline{position:relative;margin-left:8px}
-.tl-item{display:flex;gap:12px;margin:12px 0}
-.tl-dot{
-  width:12px;height:12px;border-radius:50%;
-  background:var(--brand);margin:10px 6px 0 0;flex:0 0 auto
-}
-.tl-card{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+.timeline{position:relative; margin-left:8px}
+.tl-item{display:flex; gap:12px; margin:12px 0}
+.tl-dot{width:12px; height:12px; border-radius:50%; background:var(--brand); margin:10px 6px 0 0; flex:0 0 auto}
+.tl-card{flex:1; background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:12px 14px; box-shadow:var(--shadow)}
 
 /* 数据集统计条 */
-.stats-row{
-  display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 8px
-}
+.stats-row{display:flex; gap:14px; flex-wrap:wrap; margin:12px 0 8px}
 .stat{
-  min-width:180px;
+  min-width:200px;
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:12px;
-  padding:10px 12px;
+  padding:12px 16px;
   box-shadow:var(--shadow)
 }
-.stat-label{font-size:12px;color:var(--muted);margin-bottom:4px}
-.stat-value{font-size:20px;font-weight:700}
-.inline-badge{vertical-align:middle;height:20px;margin-left:8px}
+.stat-label{font-size:12px; color:var(--muted); margin-bottom:4px}
+.stat-value{font-size:clamp(18px, 2vw, 24px); font-weight:800}
+.inline-badge{vertical-align:middle; height:20px; margin-left:8px}
+
+/* 图片/iframe 自适应，避免撑破 */
+img, iframe{max-width:100%; height:auto; display:block}
 
 .contact p{margin:6px 0}
 
 .site-footer{
-  margin-top:60px;padding:26px 0;border-top:1px solid var(--border);
-  color:var(--muted);text-align:center
+  margin-top: clamp(40px, 6vw, 72px);
+  padding: 26px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted); text-align:center
 }
 
 .to-top{
-  position:fixed;right:18px;bottom:18px;
-  width:44px;height:44px;display:grid;place-items:center;
-  border-radius:999px;background:var(--panel);border:1px solid var(--border);
-  box-shadow:var(--shadow);color:var(--text);text-decoration:none
+  position:fixed; right:18px; bottom:18px;
+  width:44px; height:44px; display:grid; place-items:center;
+  border-radius:999px; background:var(--panel); border:1px solid var(--border);
+  box-shadow:var(--shadow); color:var(--text); text-decoration:none
 }
 .to-top:hover{transform:translateY(-2px)}
 
 .bg-blur{
-  position:absolute;inset:-10% -10% auto -10%;height:220px;z-index:-1;
+  position:absolute; inset:-10% -10% auto -10%; height:220px; z-index:-1;
   background:
     radial-gradient(500px 220px at 15% 40%, #a5b4fc40 0, transparent 60%),
     radial-gradient(420px 220px at 60% 10%, #fbcfe840 0, transparent 60%),
     radial-gradient(380px 240px at 90% 30%, #93c5fd40 0, transparent 60%);
   filter:blur(6px)
-}
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: var(--container);
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 22px;
-}
-
-img, iframe {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card {
-  width: 100%;
-  box-sizing: border-box;
 }
